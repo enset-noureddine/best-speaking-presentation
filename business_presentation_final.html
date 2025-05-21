@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Speaking App - Business Presentation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .bg-primary-custom {
+            background-color: var(--primary);
+        }
+        
+        .bg-secondary-custom {
+            background-color: var(--secondary);
+        }
+        
+        .text-accent {
+            color: var(--accent);
+        }
+        
+        .btn-primary-custom {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        .cover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .cover h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+        
+        .feature-box {
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .img-container {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .logo {
+            max-height: 100px;
+            margin-bottom: 20px;
+        }
+        
+        .canvas-box {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .canvas-box h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .revenue-box {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .revenue-box h4 {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .revenue-box p {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .revenue-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -50px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+        
+        .stat-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 0 auto 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-circle::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        
+        .stat-circle .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-circle .stat-label {
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '\201C';
+            font-size: 80px;
+            font-family: serif;
+            color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .slide-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+        }
+        
+        .slide-nav a {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.3);
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .slide-nav a:hover, .slide-nav a.active {
+            background-color: var(--primary);
+            transform: scale(1.5);
+        }
+        
+        /* Custom animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .fade-in-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .cover h1 {
+                font-size: 2.5rem;
+            }
+            .stat-circle {
+                width: 120px;
+                height: 120px;
+            }
+            .stat-circle .stat-number {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 3rem 0;
+            }
+            .section-title {
+                text-align: center;
+            }
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .timeline {
+                padding-left: 30px;
+            }
+            .timeline-item::before {
+                left: -30px;
+            }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar">
+    <!-- Slide Navigation -->
+    <div class="slide-nav d-none d-lg-block">
+        <a href="#cover" class="active"></a>
+        <a href="#vision"></a>
+        <a href="#problem"></a>
+        <a href="#solution"></a>
+        <a href="#features"></a>
+        <a href="#business-model"></a>
+        <a href="#marketfit"></a>
+        <a href="#revenue"></a>
+        <a href="#roadmap"></a>
+        <a href="#team"></a>
+        <a href="#call-to-action"></a>
+    </div>
+
+    <!-- Cover Slide -->
+    <section id="cover" class="slide cover">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="https://scontent.frba2-2.fna.fbcdn.net/v/t39.30808-6/294358950_454677406666442_8405933896905983050_n.png?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=tmO4kJWpp5cQ7kNvwFJAhgv&_nc_oc=AdkYwTm6yj5EHSkR4iFhYMAWJxQD3aD_gSpdiMHrfM-3-axgKV3xApLTBVuo2FGqvPw&_nc_zt=23&_nc_ht=scontent.frba2-2.fna&_nc_gid=Q_EEg_1tmr_Mw8YHbhb2YQ&oh=00_AfKANFW7HdQ7JavhWqTqdQQegzrtiU0wGqEhKZBeXx25nA&oe=6833D2F6"
+                    alt="Best Speaking App Logo"
+                    class="logo mb-4 rounded-circle">
+                                        <h1 class="mb-4">Best Speaking App</h1>
+                    <h3 class="mb-4">Connecting English Learners Through Events, Discounts, and Community</h3>
+                    <p class="lead mb-5">The ultimate mobile platform for language practice and real-world connections</p>
+                    <a href="#vision" class="btn btn-light btn-lg px-4 py-2">Learn More</a>
+                </div>
+                <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="img-container">
+                        <img src="https://scontent.frba2-1.fna.fbcdn.net/v/t1.6435-9/87529721_120611609512978_9134144503597236224_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=2285d6&_nc_ohc=ealSkg3d4ZMQ7kNvwGFOWZ5&_nc_oc=AdnoqycUTdISdPYInXxfLgbPdIhfoDbAL_kqynWgpOmh-37FddAhJJ1mmKArDgjANag&_nc_zt=23&_nc_ht=scontent.frba2-1.fna&_nc_gid=LDmZhVjXN6znmeD_8u0acw&oh=00_AfJo8iZgKYkWrr_vOVMguEY_8NNUIkji37-60k2UmPdb0g&oe=68554BD7" alt="Mobile App Showcase" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Slide -->
+    <section id="vision" class="slide">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2" data-aos="fade-left">
+                    <h2 class="section-title mb-4">Our Vision</h2>
+                    <p class="lead mb-4">We're building more than just an app - we're creating a thriving ecosystem where language learning meets real-world connection.</p>
+                    <p>Best Speaking App transforms how English learners practice their skills by combining the best of digital convenience with authentic in-person experiences.</p>
+                    <div class="mt-5">
+                        <div class="d-flex mb-4">
+                            <div class="me-3">
+                                <i class="fas fa-check-circle text-primary fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5>Community-Centered</h5>
+                                <p>Bringing people together through events, services, and shared interests</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <div class="me-3">
+                                <i class="fas fa-check-circle text-primary fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5>Value-Driven</h5>
+                                <p>Exclusive discounts and perks that reward active participation</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="me-3">
+                                <i class="fas fa-check-circle text-primary fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5>Seamless Experience</h5>
+                                <p>One platform for events, communication, and services</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 order-md-1" data-aos="fade-right">
+                    <div class="img-container">
+                        <img src="https://petrojam.org/wp-content/uploads/2019/12/Vision.png" alt="App Vision" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Slide -->
+    <section id="problem" class="slide bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title mb-4 mx-auto" style="display: inline-block;">The Problem</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-box">
+                        <i class="fas fa-random feature-icon"></i>
+                        <h4>Fragmented Communication</h4>
+                        <p>English learners struggle with scattered conversations across Instagram DMs, WhatsApp groups, and Facebook posts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-box">
+                        <i class="fas fa-calendar-times feature-icon"></i>
+                        <h4>Disorganized Events</h4>
+                        <p>Manual spreadsheets, email threads, and text messages make event management chaotic and time-consuming.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-box">
+                        <i class="fas fa-link feature-icon"></i>
+                        <h4>Disconnected Experience</h4>
+                        <p>No unified platform to connect event planning, community services, and partnership benefits.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6 mx-auto text-center" data-aos="fade-up" data-aos-delay="700">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Slide -->
+    <section id="solution" class="slide">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h2 class="section-title mb-4">Our Solution</h2>
+                    <p class="lead mb-4">Best Speaking App is a comprehensive platform specifically designed for English-learning communities.</p>
+                    <p>We combine event management, exclusive partnerships, and community services into one seamless mobile experience.</p>
+                    <div class="row mt-5">
+                        <div class="col-6 mb-4">
+                            <div class="text-center">
+                                <div class="stat-circle bg-primary-custom">
+                                    <div class="stat-number">85%</div>
+                                    <div class="stat-label">Engagement Rate</div>
+                                </div>
+                                <p>With our community-focused approach</p>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-4">
+                            <div class="text-center">
+                                <div class="stat-circle" style="background-color: #e74c3c;">
+                                    <div class="stat-number">100%</div>
+                                    <div class="stat-label">Digital</div>
+                                </div>
+                                <p>No more manual spreadsheets or email threads</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="img-container">
+                        <img src="https://shokan.edu.kz/media/images/sclubuz.original.format-webp.webp" alt="App Solution" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Slide -->
+    <section id="features" class="slide bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title mb-4 mx-auto" style="display: inline-block;">Key Features</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="feature-box">
+                        <i class="fas fa-calendar-check feature-icon"></i>
+                        <h4>Streamlined Event Management</h4>
+                        <p>Create, approve, and manage events with RSVPs, venue details, and interactive maps - all in one place.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="feature-box">
+                        <i class="fas fa-tags feature-icon"></i>
+                        <h4>Exclusive Partner Discounts</h4>
+                        <p>Verified members receive digital coupons and special offers from partner venues and businesses.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="feature-box">
+                        <i class="fas fa-hands-helping feature-icon"></i>
+                        <h4>Community Marketplace</h4>
+                        <p>Connect members for on-demand services like tutoring, babysitting, and rideshares within the community.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="feature-box">
+                        <i class="fas fa-comments feature-icon"></i>
+                        <h4>Rich Group Conversations</h4>
+                        <p>Focus on meaningful group discussions without one-to-one message noise.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="900">
+                    <div class="feature-box">
+                        <i class="fas fa-share-alt feature-icon"></i>
+                        <h4>Social Integration</h4>
+                        <p>Seamlessly connect with existing Instagram & Facebook communities for sign-on and content sharing.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="1100">
+                    <div class="feature-box">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h4>Member Verification</h4>
+                        <p>Create a trusted community with verified members who can access premium features.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model Canvas Slide -->
+    <section id="business-model" class="slide">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title mb-4 mx-auto" style="display: inline-block;">Business Model Canvas</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-right">
+                    <div class="canvas-box">
+                        <h3><i class="fas fa-bullseye me-2"></i> Value Proposition</h3>
+                        <ul>
+                            <li>Unified mobile platform for event organization and community engagement</li>
+                            <li>Exclusive partner-negotiated discounts and digital coupons</li>
+                            <li>Member-led informal meetups and community marketplace</li>
+                            <li>Rich group-chat conversations without one-to-one noise</li>
+                            <li>Leverage existing social media communities for growth</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-left">
+                    <div class="canvas-box">
+                        <h3><i class="fas fa-users me-2"></i> Customer Segments</h3>
+                        <ul>
+                            <li>Core users: English-learners aged 18-60 seeking conversational practice</li>
+                            <li>Admins & co-hosts: Club leadership managing events & partnerships</li>
+                            <li>Venue partners: Cafes/restaurants looking to drive traffic</li>
+                            <li>Service providers: Tutors, babysitters, ride-share volunteers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-right" data-aos-delay="200">
+                    <div class="canvas-box">
+                        <h3><i class="fas fa-handshake me-2"></i> Key Partners</h3>
+                        <ul>
+                            <li>Local cafés & restaurants (venue partners)</li>
+                            <li>Payment & coupon-code providers</li>
+                            <li>Social platforms (Instagram, Facebook)</li>
+                            <li>Venue-booking APIs</li>
+                            <li>Community ambassadors and co-hosts</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-left" data-aos-delay="200">
+                    <div class="canvas-box">
+                        <h3><i class="fas fa-tasks me-2"></i> Key Activities</h3>
+                        <ul>
+                            <li>Event curation & approval workflows</li>
+                            <li>Partner deal onboarding and coupon creation</li>
+                            <li>Community moderation</li>
+                            <li>Marketing & growth initiatives</li>
+                            <li>Analytics & performance reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-right" data-aos-delay="400">
+                    <div class="canvas-box">
+                        <h3><i class="fas fa-cubes me-2"></i> Key Resources</h3>
+                        <ul>
+                            <li>Mobile app & backend platform</li>
+                            <li>Content & data (events, deals, profiles)</li>
+                            <li>Admin dashboard</li>
+                            <li>Community of English learners (85% engagement rate)</li>
+                            <li>Brand equity & social media presence</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-left" data-aos-delay="400">
+                    <div class="canvas-box">
+                        <h3><i class="fas fa-comments me-2"></i> Customer Relationships</h3>
+                        <ul>
+                            <li>Self-service for members</li>
+                            <li>Guided workflows for admins</li>
+                            <li>Community-driven engagement</li>
+                            <li>Automated notifications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Fit Slide -->
+    <section id="marketfit" class="slide bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2" data-aos="fade-left">
+                    <h2 class="section-title mb-4">Market Fit & Competitive Edge</h2>
+                    <p class="lead mb-4">Our solution creates a powerful moat through network effects and unique partnerships.</p>
+                    <div class="mt-4">
+                        <div class="d-flex mb-4">
+                            <div class="me-3">
+                                <i class="fas fa-check-circle text-primary fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5>Deep Local Partnerships</h5>
+                                <p>Negotiated, trackable discounts versus generic coupons in other apps</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <div class="me-3">
+                                <i class="fas fa-check-circle text-primary fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5>High-Engagement Community (85%+)</h5>
+                                <p>Anchored in real-world meetups and existing social channels</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <div class="me-3">
+                                <i class="fas fa-check-circle text-primary fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5>Hybrid Manual + Digital Workflow</h5>
+                                <p>Bespoke deal-making keeps the app's offerings unique and non-commoditized</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="me-3">
+                                <i class="fas fa-check-circle text-primary fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5>Powerful Network Effects</h5>
+                                <p>More venues → more members → more service providers → more partners</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 order-md-1" data-aos="fade-right">
+                    <div class="img-container">
+                        <img src="https://miro.medium.com/v2/resize:fit:1200/1*h1sTsd2rw2auspNulRYd5w.png" alt="Market Fit" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revenue Streams Slide -->
+    <section id="revenue" class="slide">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title mb-4 mx-auto" style="display: inline-block;">Revenue Streams</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up">
+                    <div class="revenue-box" style="background-color: #3498db;">
+                        <h4><i class="fas fa-star me-2"></i> Premium Subscriptions</h4>
+                        <p>"Best Speaking Premium": Tiered monthly/annual fees for extra perks like higher-value coupons and early event access</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="revenue-box" style="background-color: #2ecc71;">
+                        <h4><i class="fas fa-percentage me-2"></i> Partner Commissions</h4>
+                        <p>5% transaction fee or flat referral fee for each redeemed coupon from partner venues</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="revenue-box" style="background-color: #9b59b6;">
+                        <h4><i class="fas fa-hands-helping me-2"></i> Marketplace Fees</h4>
+                        <p>Small service-matching commission on tutoring, babysitting, and other community services</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="revenue-box" style="background-color: #e74c3c;">
+                        <h4><i class="fas fa-ad me-2"></i> Sponsored Content</h4>
+                        <p>Event sponsorships and featured listings: paid promotions for partners within the app feed</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="800">
+                    <div class="revenue-box" style="background-color: #f39c12;">
+                        <h4><i class="fas fa-bullhorn me-2"></i> Branded Content</h4>
+                        <p>Optional, non-intrusive banner space for language-learning brands and complementary services</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-8 mx-auto" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="canvas-box">
+                        <h3 class="text-center"><i class="fas fa-money-bill-wave me-2"></i> Revenue Timeline</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h5>Short Term (0-6 months)</h5>
+                                <p>Partner commissions and featured listings as initial cash flow once first 10-20 venues onboard</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h5>Medium Term (6-18 months)</h5>
+                                <p>Verified-Member subscriptions drive MRR once the active user base hits 5k-10k; marketplace fees kick in as services gain traction</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h5>Long Term (18+ months)</h5>
+                                <p>Sustainable revenue mix from all five streams with premium subscriptions becoming the primary growth driver</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Slide -->
+    <section id="roadmap" class="slide bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title mb-4 mx-auto" style="display: inline-block;">Implementation Roadmap</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-4" data-aos="fade-up">
+                    <div class="feature-box text-center">
+                        <div class="mb-4">
+                            <span class="badge bg-primary p-2">PHASE 1</span>
+                        </div>
+                        <h4>MVP Launch</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">Core event management</li>
+                            <li class="mb-2">Basic group chat</li>
+                            <li class="mb-2">User profiles</li>
+                            <li class="mb-2">5-10 initial venue partners</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-secondary">2-3 Months</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-box text-center">
+                        <div class="mb-4">
+                            <span class="badge bg-primary p-2">PHASE 2</span>
+                        </div>
+                        <h4>Partnership Expansion</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">Digital coupon system</li>
+                            <li class="mb-2">Partner dashboard</li>
+                            <li class="mb-2">Expand to 20-30 venues</li>
+                            <li class="mb-2">Premium tier testing</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-secondary">3-4 Months</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-box text-center">
+                        <div class="mb-4">
+                            <span class="badge bg-primary p-2">PHASE 3</span>
+                        </div>
+                        <h4>Community Marketplace</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">Service matching</li>
+                            <li class="mb-2">In-app payments</li>
+                            <li class="mb-2">Rating system</li>
+                            <li class="mb-2">Security features</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-secondary">4-5 Months</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-box text-center">
+                        <div class="mb-4">
+                            <span class="badge bg-primary p-2">PHASE 4</span>
+                        </div>
+                        <h4>Scale & Optimize</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">Advanced analytics</li>
+                            <li class="mb-2">Branded content platform</li>
+                            <li class="mb-2">Expand to new regions</li>
+                            <li class="mb-2">API for integrations</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-secondary">6+ Months</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="canvas-box">
+                        <h3 class="text-center mb-4"><i class="fas fa-chart-line me-2"></i> Investment & Growth</h3>
+                        <div class="mb-4">
+                            <h5>Initial Investment Requirements</h5>
+                            <div class="progress mb-2" style="height: 25px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">App Development</div>
+                            </div>
+                            <div class="progress mb-2" style="height: 25px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Marketing</div>
+                            </div>
+                            <div class="progress mb-2" style="height: 25px;">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">Operations</div>
+                            </div>
+                            <div class="progress mb-2" style="height: 25px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 15%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">Contingency</div>
+                            </div>
+                        </div>
+                        <div class="row text-center mt-5">
+                            <div class="col-md-4 mb-4">
+                                <div class="stat-circle" style="background-color: #2c3e50;">
+                                    <div class="stat-number">5k+</div>
+                                    <div class="stat-label">Target Users (Year 1)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="stat-circle" style="background-color: #3498db;">
+                                    <div class="stat-number">50+</div>
+                                    <div class="stat-label">Partner Venues (Year 1)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="stat-circle" style="background-color: #e74c3c;">
+                                    <div class="stat-number">18</div>
+                                    <div class="stat-label">Month Breakeven</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Slide -->
+    <section id="call-to-action" class="slide bg-secondary-custom text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-5 mb-md-0" data-aos="fade-right">
+                    <h2 class="mb-4">Revolutionizing Language Communities</h2>
+                    <p class="lead mb-4">Best Speaking App will transform how English learners connect, practice, and grow together.</p>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="img-container">
+                        <img src="https://static.vecteezy.com/system/resources/previews/020/312/608/non_2x/call-to-action-rubber-stamp-red-call-to-action-rubber-grunge-stamp-seal-illustration-vector.jpg" alt="Join Us" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state in nav
+                    document.querySelectorAll('.slide-nav a').forEach(navItem => {
+                        navItem.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Update active nav on scroll
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            
+            document.querySelectorAll('.slide').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    const targetId = '#' + section.getAttribute('id');
+                    document.querySelectorAll('.slide-nav a').forEach(navItem => {
+                        navItem.classList.remove('active');
+                        if (navItem.getAttribute('href') === targetId) {
+                            navItem.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
